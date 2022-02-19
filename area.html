@@ -1,28 +1,3 @@
-# Design a Website for Server Side Processing
-
-## AIM:
-To design a website to perform mathematical calculations in server side.
-
-### Step 1:
-Desing your website for calculation using wireframe work.
-
-### Step 2:
-Then to execute the wireframe work desing use html,css
-
-### Step 3:
-Use views.py to execute the coding in serverside.
-
-### Step 4:
-Mention the path of the website in urls.py.
-
-### Step 5:
-Publish the website in the given URL.
-
-
-
-## PROGRAM :
-Area.html
-~~~
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,44 +62,3 @@ Area.html
     </div>
     
 </body>
-~~~
-
-Views.py
-~~~
-from django.shortcuts import render
-
-def areacalculation(request):
-    context ={}
-    context["area"]='0'
-    context["b"]='0'
-    context["h"]='0'
-    if request.method == 'POST':
-        
-        b=request.POST.get('base','0')
-        h=request.POST.get('height','0')
-        area=0.5*int(b)*int(h)
-        context['area'] = area
-        context['b']=b
-        context['h']=h
-    return render(request,"mathapp/area.html",context)
-~~~
-
-Url.py
-~~~
-from django.urls import path
-from mathapp import views
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('areaoftriangle/',views.areacalculation,name="areaoftriangle"),
-    path('',views.areacalculation,name="areaoftriangleroot")
-]
-~~~
-
-# OUTPUT:
-![output](ex9.png)
-
-
-# Result:
-A website to perform mathematical calculations in server side is created
-
